@@ -1,19 +1,8 @@
-<header>
-  <h1>Cards de Tradução</h1>
-</header>
 <section>
   <div id="cards-en">
     <h2>Cards em Ingles</h2>
     <% @cards.each do |card| %>
-      <a href="<%="cards/#{card.id}" %>"><%= card.front %></a>
+      <%= link_to card.front, card %>
     <% end %>
   </div>
 </section>
-<aside>
-    <h1>Outros Tradutores</h1>
-    <a href="http://translate.google.com">Google Translate</a>
-    <a href="http://www.bing.com/translator/?cc=br">Bing Translator</a>
-</aside>
-<footer>
-  <p>Desenvolvido no Campus Code em 2016</p>
-</footer>
