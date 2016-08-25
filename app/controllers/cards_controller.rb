@@ -18,9 +18,13 @@ class CardsController < ApplicationController
   end
 
   def create
-    card = Card.new(card_parameters)
-    card.save
-    redirect_to card
+    @card = Card.new(card_parameters)
+    if @card.save
+      redirect_to @card
+    else
+      flash[:alert] = 'Você deve preencher front'
+      render :new
+    end
   end
 
   def edit
