@@ -1,6 +1,12 @@
 class CardsController < ApplicationController
+  before_action :set_card, only: [:show, :edit, :update, :destroy]
+
   def show
-    @card = Card.find(params[:id])
+  end
+
+  def destroy
+    @card.destroy
+    redirect_to cards_path
   end
 
   def index
@@ -8,13 +14,31 @@ class CardsController < ApplicationController
   end
 
   def new
-
+    @card = Card.new
   end
 
   def create
-    card = Card.new(front: params[:frente],
-                    back: params[:verso])
+    card = Card.new(card_parameters)
     card.save
     redirect_to card
   end
+
+  def edit
+  end
+
+  def update
+    @card.update(card_parameters)
+    redirect_to @card
+  end
+
+  private
+  def card_parameters
+    params.require(:card).permit(:front, :back)
+  end
+
+  def set_card
+    @card = Card.find(params[:id])
+  end
+
+
 end

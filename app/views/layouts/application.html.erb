@@ -10,8 +10,10 @@
 
   <body>
     <header>
-      <h1>Cards de Tradução</h1>
-      <%= image_tag('joel.jpg', alt: 'Foto do Joel Santana') %>
+      <%= link_to root_path do %>
+        <h1>Cards de Tradução</h1>
+        <%= image_tag('joel.jpg', alt: 'Foto do Joel Santana') %>
+      <% end %>
     </header>
     <%= yield %>
     <aside>

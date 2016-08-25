@@ -1,1 +1,3 @@
-<%= @card.front  %>
+<%= @card.front  %>-><%=  @card.back %>
+<%= link_to 'Editar', edit_card_path(@card) %>
+<%= link_to 'Apagar', @card, method: :delete %>
