@@ -6,9 +6,11 @@ feature 'User creates a card' do
 
     fill_in 'Frente', with: 'Teste'
     fill_in 'Verso', with: 'Test'
+    fill_in 'Autor', with: 'Joao'
     click_on 'Enviar'
 
     expect(page).to have_content 'Pt: Teste -> En: Test'
+    expect(page).to have_content 'Enviado por: Joao'
   end
 
   scenario 'with fail' do

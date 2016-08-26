@@ -1,3 +1,22 @@
 <%= @card.friendly_description %>
+<p>Enviado por: <%= @card.author %></p>
 <%= link_to 'Editar', edit_card_path(@card) %>
 <%= link_to 'Apagar', @card, method: :delete %>
+
+<% @card.comments.each do |comment| %>
+  <%= comment.author %> comentou:<br>
+  <p><%= comment.body %></p>
+<% end %>
+
+<h2>Novo Comentario</h2>
+<%= form_for [@card, @comment] do |f|%>
+  <div>
+    <%= f.label :author, 'Autor' %>
+    <%= f.text_field :author %>
+  </div>
+  <div>
+    <%= f.label :body, 'Comentario' %>
+    <%= f.text_field :body %>
+  </div>
+  <%= f.submit 'Enviar Comentário' %>
+<% end %>
